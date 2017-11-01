@@ -7,7 +7,8 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-	
+	<!--  add property file -->
+	<context:property-placeholder location="classpath:course.properties"/>
     <!-- Define your beans here -->
     
     <!-- define the dependency -->
@@ -16,8 +17,16 @@
  		class = "demo.physicalBook">
  	</bean>
  	<bean id="myCourse"
- 		class="demo.Math">	
+ 		class="demo.English">
  		<constructor-arg ref="myBook" />  		
+ 	</bean>
+ 	<bean id = "myChinese" 
+ 		class = "demo.Chinese">
+ 		<!-- set up setter injection
+ 			spring will find the setpb method -->
+ 		<property name = "pb" ref= "myBook" />
+ 		<!--  inject literal values -->
+ 		<property name ="teacher" value="${foo.teacher}"/>
  	</bean>
  
     

@@ -5,12 +5,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class myapp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		//load string congfigration file
 		ClassPathXmlApplicationContext context = 
 				new ClassPathXmlApplicationContext("applicationContext.xml");
-		Course thecourse = context.getBean("myCourse", Course.class);
+		//retrieve bean from spring container
+		Course thecourse = context.getBean("myChinese", Course.class);
+		//call methods 
 		System.out.println(thecourse.takeCourse());
 		System.out.println(thecourse.gettextbook());
+	//	System.out.println(thecourse.getTeacher());
+		//close the context
 		context.close();
 		
 	}
