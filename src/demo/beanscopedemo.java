@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class beanscopedemo {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		ClassPathXmlApplicationContext context = 
 				new ClassPathXmlApplicationContext("beanscope-applicationContext.xml");
 		//RETRIVE BEAN FROM APPLICATION CONTEXT
@@ -22,6 +22,9 @@ public class beanscopedemo {
 		System.out.println("\nMemory location for a " + a);
 		
 		System.out.println("\nMemory location for b " + b);
+		
+		System.out.println(a.gettextbook());
+		//
 		
 		context.close();
 	}

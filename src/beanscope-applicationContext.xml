@@ -15,9 +15,19 @@
  	<bean id = "myBook"
  		class = "demo.physicalBook">
  	</bean>
+ 	<!-- 
  	<bean id="myCourse"
  		class="demo.English"
  		scope = "prototype">
+ 		<constructor-arg ref="myBook" />  		
+ 	</bean>
+ 	-->
+ 	<bean id="myCourse"
+ 		class="demo.English"
+ 		init-method="mystartup"
+ 		destroy-method = "mycleanup">
+ 		
+ 		<!--  constructor injection -->
  		<constructor-arg ref="myBook" />  		
  	</bean>
  	

@@ -8,14 +8,22 @@ public class English implements Course {
 	}
 	@Override
 	public String takeCourse() {
-		// TODO Auto-generated method stub
 		return "Apple";
 	}
 
 	@Override
 	public String gettextbook() {
-		// TODO Auto-generated method stub
 		return "change a library" + pb.getbook();
+	}
+	
+	//add an init method
+	public void mystartup() {
+		System.out.println("my start up method.");
+	}
+	
+	//add a destroy method
+	public void mycleanup() {
+		System.out.println("my clean up method.");
 	}
 
 }
