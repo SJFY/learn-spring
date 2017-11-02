@@ -2,10 +2,14 @@ package demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 //default bean id is lower case of first character, here is math
-@Component
+
+//no need of annotation in case of java config file
+//we will add beans in config file
+//@Component
 public class Math implements Course {
 
 	private Book textbook;
@@ -13,10 +17,13 @@ public class Math implements Course {
 	//constructor injection, spring will scan for a component that will implement
 	//the book interface, autowire will do that
 	
+	@Value("${foo.email}")
+	private String email;
+	@Value("${foo.phone}")
+	private String phone;
 	
-	@Autowired
 	
-	public Math(@Qualifier("electricalbook")Book textbook) {
+	public Math(Book textbook) {
 		this.textbook = textbook;
 	}
 
@@ -32,6 +39,23 @@ public class Math implements Course {
 		return textbook.getbook();
 	}
 
+	public Book getTextbook() {
+		return textbook;
+	}
+
+	public void setTextbook(Book textbook) {
+		this.textbook = textbook;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
+	
 
 
 }
