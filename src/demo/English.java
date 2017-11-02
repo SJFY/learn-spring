@@ -1,10 +1,26 @@
 package demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("singleton")
 public class English implements Course {
 
-	private physicalBook pb;
-	public English(physicalBook tpb) {
-		pb = tpb;
+	//setter injection
+	private Book textbook;
+	public English() {
+		System.out.println("inside the default constructor");
+	}
+	
+	//create a setter method
+	@Autowired
+	@Qualifier("electricalbook")
+	public void setBook(Book textbook) {
+		System.out.println("inside the setter method");
+		this.textbook = textbook;
 	}
 	@Override
 	public String takeCourse() {
@@ -13,17 +29,11 @@ public class English implements Course {
 
 	@Override
 	public String gettextbook() {
-		return "change a library" + pb.getbook();
+		// TODO Auto-generated method stub
+		return textbook.getbook();
 	}
+
 	
-	//add an init method
-	public void mystartup() {
-		System.out.println("my start up method.");
-	}
-	
-	//add a destroy method
-	public void mycleanup() {
-		System.out.println("my clean up method.");
-	}
+
 
 }
